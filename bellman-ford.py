@@ -35,9 +35,9 @@ class Graph:
  # all other vertices using Bellman-Ford algorithm. The function
  # also detects negative weight cycle
  def BellmanFord(self, src):
-
   # Step 1: Initialize distances from src to all other vertices
   # as INFINITE
+  self.nearestHospitals = []
   dist = [float("Inf")] * self.V
   dist[src] = 0
 
@@ -162,7 +162,10 @@ g.addEdge(11, 31, 1200)
 
 
 # Print the solution
-g.BellmanFord(20)
+g.BellmanFord(12) # vertex 21
+g.BellmanFord(20) # vertex 21
+g.BellmanFord(23) # vertex 24
+g.BellmanFord(25) # vertex 26
 
 # note that in this code version,
 # the vertex starts from 0 instead of 1

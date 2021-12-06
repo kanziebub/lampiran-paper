@@ -34,11 +34,19 @@ public class dijkstra {
 
             BSD.addEdge(N1, N2, w);
         }
-
-        String x = "21";
-        String dijkstra = BSD.dijkstraNearestHospital(x);
+        
+        String x; String dijkstra;
+        
+        x = "21";
+        dijkstra = BSD.dijkstraNearestHospital(x);
 
         out.println(dijkstra);
+
+        x = "24";
+        dijkstra = BSD.dijkstraNearestHospital(x);
+
+        out.println(dijkstra);
+
         out.close();
     }
 
