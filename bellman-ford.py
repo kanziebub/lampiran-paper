@@ -8,16 +8,28 @@ class Graph:
   self.V = vertices # No. of vertices
   self.graph = []
   self.hospitals = []
+  self.nearestHospitals = []
 
  # function to add an edge to graph
  def addEdge(self, u, v, w):
   self.graph.append([u, v, w])
-  
+ 
+ def addHospital(self, v):
+  self.hospitals.append(v)
+
  # utility function used to print the solution
- def printArr(self, dist):
-  print("Vertex Distance from Source")
+ def findHospital(self, dist):
   for i in range(self.V):
-   print("{0}\t\t{1}".format(i, dist[i]))
+   if i in self.hospitals:
+    self.nearestHospitals.append([i+1, dist[i]])
+
+ def printHosp(self):
+  min = self.nearestHospitals[0]
+  for i in range(0, len(self.nearestHospitals)):  
+   if(self.nearestHospitals[i][1] < min[1]):    
+    min = self.nearestHospitals[i]; 
+  print("Nearest hospital is vertex ", min[0], " with a cost of ", min[1])
+    
  
  # The main function that finds shortest distances from src to
  # all other vertices using Bellman-Ford algorithm. The function
@@ -53,9 +65,19 @@ class Graph:
       return
       
   # print all distance
-  self.printArr(dist)
+  self.findHospital(dist)
+  self.printHosp()
 
 g = Graph(32)
+
+g.addHospital(0)
+g.addHospital(4)
+g.addHospital(9)
+g.addHospital(10)
+g.addHospital(14)
+g.addHospital(15)
+g.addHospital(27)
+
 g.addEdge(0, 1, 65)
 g.addEdge(1, 2, 400)
 g.addEdge(2, 3, 60)
@@ -142,6 +164,11 @@ g.addEdge(11, 31, 1200)
 # Print the solution
 g.BellmanFord(20)
 
+# note that in this code version,
+# the vertex starts from 0 instead of 1
+# the output was adjusted in line 24
+
 # Initially, Contributed by Neelam Yadav
 # Later On, Edited by Himanshu Garg
 # https://www.geeksforgeeks.org/bellman-ford-algorithm-dp-23/
+# Adjusted by Nabila Khansa 1906293221 to fit paper
