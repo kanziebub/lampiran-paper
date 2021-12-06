@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import static java.lang.Math.max;
 
-public class pathfinding {
+public class dijkstra {
     private static InputReader in;
     private static PrintWriter out;
 
